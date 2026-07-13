@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.env
+
+# Node / JS
+node_modules/
+dist/
+build/
+.eslintcache
+.stylelintcache
+*.local
+
+# Database
+chroma_db/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Scratch
+.idea/
+.vscode/
+scratch/
+.system_generated/
+*.log

@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --on-secondary-fixed-variant: 51 74 83;
+    --on-secondary-fixed: 5 30 38;
+    --background: 248 250 251;
+    --inverse-primary: 71 222 179;
+    --surface-container-low: 242 244 245;
+    --tertiary-fixed-dim: 255 181 151;
+    --surface-dim: 216 218 219;
+    --surface: 248 250 251;
+    --on-background: 25 28 29;
+    --tertiary: 152 71 34;
+    --surface-bright: 248 250 251;
+    --secondary: 75 98 107;
+    --secondary-fixed-dim: 178 202 213;
+    --surface-container-lowest: 255 255 255;
+    --on-tertiary-fixed-variant: 121 48 12;
+    --on-primary: 255 255 255;
+    --secondary-container: 205 231 241;
+    --primary: 0 108 83;
+    --surface-container-high: 230 232 233;
+    --on-primary-fixed-variant: 0 81 62;
+    --outline-variant: 187 202 194;
+    --primary-fixed-dim: 71 222 179;
+    --on-surface: 25 28 29;
+    --inverse-surface: 46 49 50;
+    --tertiary-fixed: 255 219 205;
+    --tertiary-container: 255 152 108;
+    --surface-container: 236 238 239;
+    --primary-container: 39 201 160;
+    --inverse-on-surface: 239 241 242;
+    --on-tertiary: 255 255 255;
+    --secondary-fixed: 205 231 241;
+    --on-surface-variant: 60 74 68;
+    --on-tertiary-container: 119 46 10;
+    --error: 186 26 26;
+    --on-primary-fixed: 0 33 23;
+    --error-container: 255 218 214;
+    --on-tertiary-fixed: 54 15 0;
+    --surface-container-highest: 225 227 228;
+    --primary-fixed: 106 251 207;
+    --outline: 108 122 116;
+    --surface-tint: 0 108 83;
+    --on-primary-container: 0 79 60;
+    --on-secondary: 255 255 255;
+    --on-error-container: 147 0 10;
+    --on-error: 255 255 255;
+    --surface-variant: 225 227 228;
+    --on-secondary-container: 81 104 113;
+  }
+  html.dark {
+    --tertiary: 207 210 229;
+    --secondary-fixed: 225 225 241;
+    --surface-dim: 5 20 36;
+    --on-tertiary-fixed: 23 27 41;
+    --primary-fixed-dim: 47 224 170;
+    --on-secondary-fixed: 25 27 38;
+    --on-surface: 212 228 250;
+    --on-background: 212 228 250;
+    --on-primary-container: 0 83 60;
+    --surface-container-lowest: 1 15 31;
+    --surface-container-highest: 39 54 71;
+    --primary-fixed: 89 253 197;
+    --surface-container-low: 13 28 45;
+    --background: 5 20 36;
+    --outline-variant: 60 74 67;
+    --primary-container: 0 208 156;
+    --tertiary-container: 179 182 201;
+    --tertiary-fixed: 223 225 245;
+    --secondary: 197 197 213;
+    --secondary-fixed-dim: 197 197 213;
+    --on-secondary-fixed-variant: 68 70 83;
+    --on-error: 105 0 5;
+    --on-error-container: 255 218 214;
+    --inverse-on-surface: 35 49 67;
+    --on-tertiary-container: 67 71 87;
+    --surface-tint: 47 224 170;
+    --error-container: 147 0 10;
+    --surface-container-high: 28 43 60;
+    --tertiary-fixed-dim: 195 198 216;
+    --on-tertiary-fixed-variant: 66 70 86;
+    --on-tertiary: 44 48 62;
+    --on-primary-fixed-variant: 0 81 59;
+    --outline: 133 148 140;
+    --on-surface-variant: 186 202 193;
+    --on-primary-fixed: 0 33 22;
+    --on-secondary-container: 179 180 195;
+    --on-primary: 0 56 40;
+    --error: 255 180 171;
+    --secondary-container: 68 70 83;
+    --surface-variant: 39 54 71;
+    --inverse-surface: 212 228 250;
+    --inverse-primary: 0 108 79;
+    --surface-container: 18 33 49;
+    --primary: 68 237 183;
+    --on-secondary: 46 48 60;
+    --surface: 5 20 36;
+    --surface-bright: 44 58 76;
+  }
+
+
+  .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+  }
+  body {
+      background-color: rgb(var(--background));
+      color: rgb(var(--on-surface));
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #bbcac2;
+      border-radius: 10px;
+  }
+  
+  .loading-dots:after {
+    content: '.';
+    animation: dots 1.5s steps(5, end) infinite;
+  }
+}
+
+@keyframes dots {
+  0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+  40% { color: inherit; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+  60% { text-shadow: .25em 0 0 inherit, .5em 0 0 rgba(0,0,0,0); }
+  80%, 100% { text-shadow: .25em 0 0 inherit, .5em 0 0 inherit; }
+}

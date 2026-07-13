@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#cfd2e5",
+                        "secondary-fixed": "#e1e1f1",
+                        "surface-dim": "#051424",
+                        "on-tertiary-fixed": "#171b29",
+                        "primary-fixed-dim": "#2fe0aa",
+                        "on-secondary-fixed": "#191b26",
+                        "on-surface": "#d4e4fa",
+                        "on-background": "#d4e4fa",
+                        "on-primary-container": "#00533c",
+                        "surface-container-lowest": "#010f1f",
+                        "surface-container-highest": "#273647",
+                        "primary-fixed": "#59fdc5",
+                        "surface-container-low": "#0d1c2d",
+                        "background": "#051424",
+                        "outline-variant": "#3c4a43",
+                        "primary-container": "#00d09c",
+                        "tertiary-container": "#b3b6c9",
+                        "tertiary-fixed": "#dfe1f5",
+                        "secondary": "#c5c5d5",
+                        "secondary-fixed-dim": "#c5c5d5",
+                        "on-secondary-fixed-variant": "#444653",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#233143",
+                        "on-tertiary-container": "#434757",
+                        "surface-tint": "#2fe0aa",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#1c2b3c",
+                        "tertiary-fixed-dim": "#c3c6d8",
+                        "on-tertiary-fixed-variant": "#424656",
+                        "on-tertiary": "#2c303e",
+                        "on-primary-fixed-variant": "#00513b",
+                        "outline": "#85948c",
+                        "on-surface-variant": "#bacac1",
+                        "on-primary-fixed": "#002116",
+                        "on-secondary-container": "#b3b4c3",
+                        "on-primary": "#003828",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#444653",
+                        "surface-variant": "#273647",
+                        "inverse-surface": "#d4e4fa",
+                        "inverse-primary": "#006c4f",
+                        "surface-container": "#122131",
+                        "primary": "#44edb7",
+                        "on-secondary": "#2e303c",
+                        "surface": "#051424",
+                        "surface-bright": "#2c3a4c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-max-width": "1440px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "display-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "label-lg": ["Outfit"],
+                        "label-md": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+            font-family: 'Outfit', sans-serif;
+        }
+        .glass-card {
+            background: rgba(30, 34, 48, 0.6);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-sidebar {
+            background: rgba(13, 28, 45, 0.8);
+            backdrop-filter: blur(16px);
+        }
+        .premium-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 208, 156, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #273647;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar Component -->
+<aside class="h-screen sticky left-0 w-64 flex flex-col bg-surface-container-low dark:bg-surface-container-low/80 backdrop-blur-lg border-r border-white/5 shadow-xl p-gutter z-50">
+<div class="mb-stack-lg">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary leading-tight">Mutual Fund FAQ</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70 uppercase tracking-widest">AI Assistant</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-primary text-on-primary font-bold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 premium-glow active:scale-95 mb-8">
+<span class="material-symbols-outlined">add</span>
+<span class="font-label-lg text-label-lg">New Chat</span>
+</button>
+<nav class="flex flex-col gap-base">
+<!-- Assistant -->
+<a class="flex items-center gap-4 p-3 font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-300 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">smart_toy</span>
+<span>Assistant</span>
+</a>
+<!-- Directory (Active) -->
+<a class="flex items-center gap-4 p-3 font-label-lg text-label-lg bg-primary-container text-on-primary-container rounded-lg font-bold shadow-sm transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span>Directory</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-4 p-3 font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-300 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">monitoring</span>
+<span>Analytics</span>
+</a>
+<!-- History -->
+<a class="flex items-center gap-4 p-3 font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-300 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">history</span>
+<span>History</span>
+</a>
+<!-- Support -->
+<a class="flex items-center gap-4 p-3 font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-300 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">contact_support</span>
+<span>Support</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto pt-6 border-t border-white/5">
+<div class="flex items-center gap-3 p-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
+<img alt="User Profile" class="w-10 h-10 rounded-full border border-primary/20" data-alt="A professional high-resolution headshot of a sophisticated financial advisor in a modern glass-walled office. The lighting is soft and cinematic with cool blue and teal tones reflecting off dark surfaces. The individual wears a sharp navy suit and has a confident, welcoming expression, embodying expertise and reliability in a high-tech financial landscape." src="https://lh3.googleusercontent.com/aida/AP1WRLsGQUAYoAeaLSjxMQMlED3YxdLKLQ6gPbcAHPh6axK2XbvHZanWJOQz9w1U_arHG2nPNEtWOw4ddMx_MuQ4P86qjkyvU3djkdKsvrhlyXJImNI5us6aqzwnjLqK6lLjSwsWTOT9xwj01LrcMgiCJFuKLMamjeXJJhoLDjrAivoEsqKOIWWJPtPGV322y-DzLBAP4wF3rQx6N7Omhl37ltIzQuCqfl7Vu1NHq-TBhk35W9Mv8B8xwUo838c"/>
+<div class="flex-1">
+<p class="font-label-lg text-label-lg text-on-surface">Alex Thompson</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Premium Investor</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 h-screen overflow-y-auto custom-scrollbar bg-surface relative">
+<!-- TopNavBar Component -->
+<header class="w-full sticky top-0 z-50 bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl border-b border-white/10 shadow-sm flex items-center justify-between px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">ICICI Prudential Mutual Fund Assistant</span>
+<nav class="hidden lg:flex items-center gap-6 ml-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-200 cursor-pointer active:scale-95" href="#">AI Chat</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary border-b-2 border-primary pb-1 cursor-pointer active:scale-95" href="#">Fund Directory</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-200 cursor-pointer active:scale-95" href="#">Portfolio Insights</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-200 cursor-pointer active:scale-95" href="#">Help Center</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative group">
+<input class="bg-surface-container-low border border-white/10 text-on-surface text-label-md py-2 px-4 rounded-full w-64 focus:outline-none focus:border-primary transition-all focus:ring-1 focus:ring-primary/30" placeholder="Search funds..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-margin-desktop max-w-[1600px] mx-auto">
+<!-- Hero / Header Section -->
+<section class="mb-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-stack-md">
+<div class="space-y-2">
+<h2 class="font-display-md text-display-md text-on-surface">Fund Directory</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Explore our curated selection of high-performance mutual funds designed to maximize your long-term wealth growth through precision and transparency.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Market Sentiment</span>
+<span class="font-headline-sm text-headline-sm text-primary">Bullish +1.24%</span>
+</div>
+<div class="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center bg-primary/5">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 flex-wrap border-y border-white/5 py-6">
+<span class="px-4 py-2 bg-surface-container-highest rounded-full text-label-md font-semibold text-primary">All Funds</span>
+<span class="px-4 py-2 border border-white/10 rounded-full text-label-md font-medium text-on-surface-variant hover:border-primary/50 transition-colors cursor-pointer">Equity</span>
+<span class="px-4 py-2 border border-white/10 rounded-full text-label-md font-medium text-on-surface-variant hover:border-primary/50 transition-colors cursor-pointer">Debt</span>
+<span class="px-4 py-2 border border-white/10 rounded-full text-label-md font-medium text-on-surface-variant hover:border-primary/50 transition-colors cursor-pointer">Hybrid</span>
+<span class="px-4 py-2 border border-white/10 rounded-full text-label-md font-medium text-on-surface-variant hover:border-primary/50 transition-colors cursor-pointer">Commodity</span>
+</div>
+</section>
+<!-- Bento Grid of Fund Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Large Cap Card -->
+<div class="glass-card p-gutter rounded-xl flex flex-col group premium-glow transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full uppercase">Equity</span>
+<div class="mt-2 flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">stars</span>
+<span class="font-label-md">5-Star Rated</span>
+</div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">ICICI Pru Large Cap Fund</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mb-6">Focus on market leaders with strong earnings potential and stability.</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Expense Ratio</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">1.02%</p>
+</div>
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Risk Profile</p>
+<p class="font-headline-sm text-headline-sm text-error">Very High</p>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Fund Manager</span>
+<span class="font-label-lg text-label-lg text-on-surface">Anish Tawakley</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Min. Investment</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹5,000</span>
+</div>
+<button class="w-full mt-4 py-3 border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-bold rounded-lg transition-all">View Analytics</button>
+</div>
+</div>
+<!-- Bluechip Card -->
+<div class="glass-card p-gutter rounded-xl flex flex-col group premium-glow transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full uppercase">Bluechip</span>
+<div class="mt-2 flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-md">Consistent Growth</span>
+</div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">ICICI Pru Bluechip Fund</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mb-6">Invest in established blue-chip giants with historical resilience.</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Expense Ratio</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">0.95%</p>
+</div>
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Risk Profile</p>
+<p class="font-headline-sm text-headline-sm text-error">High</p>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Fund Manager</span>
+<span class="font-label-lg text-label-lg text-on-surface">Rajat Chandak</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Min. Investment</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹100 (SIP)</span>
+</div>
+<button class="w-full mt-4 py-3 border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-bold rounded-lg transition-all">View Analytics</button>
+</div>
+</div>
+<!-- Midcap Card -->
+<div class="glass-card p-gutter rounded-xl flex flex-col group premium-glow transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">rocket_launch</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full uppercase">Growth</span>
+<div class="mt-2 flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="font-label-md">High Alpha</span>
+</div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">ICICI Pru Midcap Fund</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mb-6">Dynamic exposure to emerging market leaders of tomorrow.</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Expense Ratio</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">1.21%</p>
+</div>
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Risk Profile</p>
+<p class="font-headline-sm text-headline-sm text-error">Very High</p>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Fund Manager</span>
+<span class="font-label-lg text-label-lg text-on-surface">Abhijit Dey</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Min. Investment</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹5,000</span>
+</div>
+<button class="w-full mt-4 py-3 border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-bold rounded-lg transition-all">View Analytics</button>
+</div>
+</div>
+<!-- Corporate Bond Card -->
+<div class="glass-card p-gutter rounded-xl flex flex-col group premium-glow transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance_wallet</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full uppercase">Debt</span>
+<div class="mt-2 flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span class="font-label-md">Stability</span>
+</div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Corporate Bond Fund</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mb-6">Invest in high-rated corporate debt for steady, predictable returns.</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Expense Ratio</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">0.45%</p>
+</div>
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Risk Profile</p>
+<p class="font-headline-sm text-headline-sm text-primary-fixed-dim">Moderate</p>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Fund Manager</span>
+<span class="font-label-lg text-label-lg text-on-surface">Manish Banthia</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Min. Investment</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹5,000</span>
+</div>
+<button class="w-full mt-4 py-3 border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-bold rounded-lg transition-all">View Analytics</button>
+</div>
+</div>
+<!-- Liquid Fund Card -->
+<div class="glass-card p-gutter rounded-xl flex flex-col group premium-glow transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full uppercase">Cash Management</span>
+<div class="mt-2 flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label-md">Instant Liquidity</span>
+</div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">ICICI Pru Liquid Fund</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mb-6">Park your surplus cash in highly liquid, low-risk instruments.</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Expense Ratio</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">0.18%</p>
+</div>
+<div class="p-4 bg-surface-container rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Risk Profile</p>
+<p class="font-headline-sm text-headline-sm text-primary">Low</p>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Fund Manager</span>
+<span class="font-label-lg text-label-lg text-on-surface">Rohan Maru</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Min. Investment</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹100</span>
+</div>
+<button class="w-full mt-4 py-3 border border-primary/30 text-primary hover:bg-primary hover:text-on-primary font-bold rounded-lg transition-all">View Analytics</button>
+</div>
+</div>
+<!-- Portfolio Analytics Bento Piece -->
+<div class="glass-card p-gutter rounded-xl md:col-span-1 xl:col-span-1 flex flex-col bg-primary/5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl -mr-16 -mt-16 group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="z-10 h-full flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-4">Market Overview</h4>
+<div class="space-y-4 mb-8 flex-1">
+<div class="flex justify-between items-center text-label-lg text-on-surface-variant">
+<span>Nifty 50</span>
+<span class="text-primary">+0.85%</span>
+</div>
+<div class="flex justify-between items-center text-label-lg text-on-surface-variant">
+<span>Sensex</span>
+<span class="text-primary">+0.72%</span>
+</div>
+<div class="flex justify-between items-center text-label-lg text-on-surface-variant">
+<span>Midcap Index</span>
+<span class="text-error">-0.14%</span>
+</div>
+</div>
+<img alt="Market Analytics Chart" class="rounded-lg mb-6 shadow-lg border border-white/10" data-alt="A clean, minimalist stock market line graph showing an upward trajectory, rendered with a glowing teal line against a deep dark navy background. Subtle glassmorphism overlays and soft atmospheric lighting create a high-end financial dashboard feel. The aesthetic is modern and sophisticated, consistent with professional investment tools." src="https://lh3.googleusercontent.com/aida/AP1WRLtkmWkmO_HifxeH_CoOiheKku38Q7e5XNWKwfac2MaZrWEViOXcWxhXSxTHwRwzOeOmuSO4HNu5UutO-FNcA3qeH6CiPVxwgQMxxcUd4h5_ERsUgLMaKnW8OiBLbBqgpsmSYSpRc3ysaVHuSjgjxyKicNTxK0WpW_g5Dwu7JTqVejmlh7vm9XZ9tcMq-BhAJW1FzceUmA07jjEMUKTRVua2QminEUFUx7f98n_w6xESMXudlwD8lFrP1tc"/>
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-lg premium-glow hover:scale-[1.02] active:scale-95 transition-all">Compare All Funds</button>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="mt-stack-lg border-t border-white/5 pt-gutter text-center pb-stack-md">
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">
+                    Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
+                </p>
+<div class="mt-4 flex justify-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cookie Policy</a>
+</div>
+</footer>
+</div>
+</main>
+<script>
+        // Micro-interactions for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

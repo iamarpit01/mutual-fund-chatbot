@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+langchain
+langchain-openai
+chromadb
+requests
+beautifulsoup4
+apscheduler
+python-dotenv
+langchain

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ICICI Prudential Mutual Fund Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #051424;
+            color: #d4e4fa;
+            margin: 0;
+            overflow: hidden;
+        }
+        .glass-card {
+            background: rgba(30, 34, 48, 0.6);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-modal {
+            background: rgba(45, 51, 72, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .teal-glow {
+            box-shadow: 0 0 20px rgba(0, 208, 156, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #44edb7;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#cfd2e5",
+                      "secondary-fixed": "#e1e1f1",
+                      "surface-dim": "#051424",
+                      "on-tertiary-fixed": "#171b29",
+                      "primary-fixed-dim": "#2fe0aa",
+                      "on-secondary-fixed": "#191b26",
+                      "on-surface": "#d4e4fa",
+                      "on-background": "#d4e4fa",
+                      "on-primary-container": "#00533c",
+                      "surface-container-lowest": "#010f1f",
+                      "surface-container-highest": "#273647",
+                      "primary-fixed": "#59fdc5",
+                      "surface-container-low": "#0d1c2d",
+                      "background": "#051424",
+                      "outline-variant": "#3c4a43",
+                      "primary-container": "#00d09c",
+                      "tertiary-container": "#b3b6c9",
+                      "tertiary-fixed": "#dfe1f5",
+                      "secondary": "#c5c5d5",
+                      "secondary-fixed-dim": "#c5c5d5",
+                      "on-secondary-fixed-variant": "#444653",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#233143",
+                      "on-tertiary-container": "#434757",
+                      "surface-tint": "#2fe0aa",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#1c2b3c",
+                      "tertiary-fixed-dim": "#c3c6d8",
+                      "on-tertiary-fixed-variant": "#424656",
+                      "on-tertiary": "#2c303e",
+                      "on-primary-fixed-variant": "#00513b",
+                      "outline": "#85948c",
+                      "on-surface-variant": "#bacac1",
+                      "on-primary-fixed": "#002116",
+                      "on-secondary-container": "#b3b4c3",
+                      "on-primary": "#003828",
+                      "error": "#ffb4ab",
+                      "secondary-container": "#444653",
+                      "surface-variant": "#273647",
+                      "inverse-surface": "#d4e4fa",
+                      "inverse-primary": "#006c4f",
+                      "surface-container": "#122131",
+                      "primary": "#44edb7",
+                      "on-secondary": "#2e303c",
+                      "surface": "#051424",
+                      "surface-bright": "#2c3a4c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "24px",
+                      "margin-desktop": "48px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "container-max-width": "1440px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Outfit"],
+                      "display-lg": ["Outfit"],
+                      "headline-md": ["Outfit"],
+                      "display-md": ["Outfit"],
+                      "body-lg": ["Outfit"],
+                      "body-md": ["Outfit"],
+                      "label-lg": ["Outfit"],
+                      "label-md": ["Outfit"]
+              },
+              "fontSize": {
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "display-md": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface h-screen flex overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen sticky left-0 w-64 flex flex-col bg-surface-container-low dark:bg-surface-container-low/80 backdrop-blur-lg border-r border-white/5 shadow-xl font-label-lg text-label-lg flex flex-col gap-base p-gutter">
+<div class="mb-stack-lg">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center teal-glow">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary leading-tight">Mutual Fund FAQ</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">AI Assistant</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 hover:translate-x-1 transition-all duration-300 teal-glow">
+<span class="material-symbols-outlined">add</span>
+                New Chat
+            </button>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Active Tab: Assistant -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span>Assistant</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span>Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span>Support</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-high cursor-pointer transition-all">
+<img alt="User Profile" class="w-10 h-10 rounded-full border border-primary/20" data-alt="A professional user avatar in a minimalist financial application, featuring a soft-lit character against a deep tech-blue background. The style is sleek and modern, aligned with high-end fintech aesthetics." src="https://lh3.googleusercontent.com/aida/AP1WRLvClB86TWmD4KoVVoaoRtAiRWXt7uc5ezTa2TfnYUU5uJPx2FJC-opIAQTIBtlYztvwfpA-rbAdZ_nmLpnmw2BtLw1sxZgi8CnipxI6lAyOsFE-dTlu3hPPe8QiIKHTYrejyeemtdykxyHt5Sys_LFr8jfiwbI6edo8qnX2tS_qycZ49kqzh56JO0g1Gg2Sq_ohsOjl_3n6gaTukUG47lOr9QBDLIVVMXIfdihzho9_onzdXtu04updcis"/>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-sm truncate">Rohan Malhotra</p>
+<p class="text-xs text-on-surface-variant truncate">Premium Member</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col relative overflow-hidden">
+<!-- TopNavBar Anchor -->
+<header class="w-full sticky top-0 z-50 bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl border-b border-white/10 shadow-sm flex items-center justify-between px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-gutter">
+<div class="flex gap-6 items-center">
+<a class="font-body-md text-body-md text-primary dark:text-primary border-b-2 border-primary pb-1 transition-colors duration-200" href="#">AI Chat</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-200" href="#">Fund Directory</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-200" href="#">Portfolio Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search Bar -->
+<div class="relative hidden xl:block">
+<input class="bg-surface-container-lowest border border-white/10 rounded-full px-10 py-2 text-sm w-64 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search funds or insights..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer active:scale-95 transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer active:scale-95 transition-all">help_center</button>
+</div>
+</div>
+</header>
+<!-- Chat Area -->
+<section class="flex-1 overflow-y-auto custom-scrollbar px-margin-desktop py-stack-lg flex flex-col gap-stack-md max-w-4xl mx-auto w-full">
+<!-- Disclaimer Badge -->
+<div class="flex justify-center mb-base">
+<div class="glass-card px-4 py-2 rounded-full border border-error/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm">warning</span>
+<p class="text-[11px] font-label-md text-on-surface-variant uppercase tracking-widest">Mutual fund investments are subject to market risks. Read all scheme related documents carefully.</p>
+</div>
+</div>
+<!-- Welcome State -->
+<div class="text-center py-stack-lg space-y-4">
+<h2 class="font-display-md text-display-md text-on-surface">Hello Rohan, how can I assist with your <span class="text-primary">portfolio</span> today?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Ask me about SIP performances, tax implications, or compare different mutual fund schemes in real-time.</p>
+</div>
+<!-- Example Pills -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-stack-lg">
+<button class="glass-card p-4 rounded-xl text-left hover:border-primary/50 transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-2">trending_up</span>
+<p class="font-label-lg text-label-lg block">Top performing Small Cap funds?</p>
+<p class="text-xs text-on-surface-variant mt-1 group-hover:text-primary/70 transition-colors">Analyze last 3 year returns</p>
+</button>
+<button class="glass-card p-4 rounded-xl text-left hover:border-primary/50 transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-2">account_balance_wallet</span>
+<p class="font-label-lg text-label-lg block">What is ELSS tax saving limit?</p>
+<p class="text-xs text-on-surface-variant mt-1 group-hover:text-primary/70 transition-colors">Section 80C guidelines</p>
+</button>
+<button class="glass-card p-4 rounded-xl text-left hover:border-primary/50 transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-2">compare_arrows</span>
+<p class="font-label-lg text-label-lg block">Compare Bluechip vs Multi-asset</p>
+<p class="text-xs text-on-surface-variant mt-1 group-hover:text-primary/70 transition-colors">Risk vs Reward analysis</p>
+</button>
+</div>
+<!-- Chat History -->
+<div class="space-y-stack-md">
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="max-w-[80%] bg-surface-container-highest/50 backdrop-blur-md px-5 py-3 rounded-2xl rounded-tr-none border border-white/5">
+<p class="font-body-md text-body-md">Can you explain the difference between Direct and Regular plans for the ICICI Pru Bluechip Fund?</p>
+<span class="text-[10px] text-on-surface-variant mt-2 block text-right">10:42 AM</span>
+</div>
+</div>
+<!-- Assistant Message -->
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="max-w-[85%] glass-card px-5 py-4 rounded-2xl rounded-tl-none border border-primary/10">
+<p class="font-body-md text-body-md mb-4">The primary difference between <span class="text-primary font-bold">Direct</span> and <span class="text-primary font-bold">Regular</span> plans lies in the Expense Ratio and the way you invest:</p>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span><strong>Expense Ratio:</strong> Direct plans have a lower expense ratio because no commission is paid to distributors. This usually results in slightly higher NAV and returns over the long term.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span><strong>Investment Mode:</strong> You invest directly with the AMC for Direct plans. Regular plans are bought through a broker or distributor who provides advice and handles transactions.</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-surface-container-lowest/40 rounded-lg border border-white/5">
+<p class="text-xs font-bold uppercase text-primary mb-2">Live Data: ICICI Pru Bluechip Fund</p>
+<div class="flex justify-between text-sm">
+<span>Direct Plan ER: 0.95%</span>
+<span>Regular Plan ER: 1.65%</span>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant mt-4 block">Assistant · Just now</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Input Area -->
+<footer class="p-stack-md bg-gradient-to-t from-background via-background to-transparent">
+<div class="max-w-4xl mx-auto relative">
+<div class="glass-modal rounded-2xl p-2 flex items-center gap-3 border border-white/10 teal-glow">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface font-body-md py-3 resize-none h-12 max-h-32 custom-scrollbar" placeholder="Ask your mutual fund query..." rows="1"></textarea>
+<button class="w-10 h-10 bg-primary text-on-primary rounded-xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex justify-between items-center px-4 mt-2">
+<p class="text-[10px] text-on-surface-variant">AI-generated response. Verify details with current SID.</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-[10px] text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">mic</span>
+                            Voice Input
+                        </button>
+<button class="flex items-center gap-1 text-[10px] text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                            Advanced Analysis
+                        </button>
+</div>
+</div>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button (FAB) suppression on focused chat -->
+<!-- Determined per rule: FAB is suppressed on Task-Focused Detail screens -->
+<script>
+        // Micro-interaction for the textarea auto-expand
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if(this.scrollHeight > 128) {
+                this.style.overflowY = 'scroll';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+
+        // Simple smooth scroll to bottom for chat simulation
+        const chatArea = document.querySelector('section');
+        chatArea.scrollTop = chatArea.scrollHeight;
+    </script>
+</body></html>

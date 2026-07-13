@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mutual Fund AI - Financial Intelligence Engine</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#334a53",
+                    "on-secondary-fixed": "#051e26",
+                    "background": "#f8fafb",
+                    "inverse-primary": "#47deb3",
+                    "surface-container-low": "#f2f4f5",
+                    "tertiary-fixed-dim": "#ffb597",
+                    "surface-dim": "#d8dadb",
+                    "surface": "#f8fafb",
+                    "on-background": "#191c1d",
+                    "tertiary": "#984722",
+                    "surface-bright": "#f8fafb",
+                    "secondary": "#4b626b",
+                    "secondary-fixed-dim": "#b2cad5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#79300c",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#cde7f1",
+                    "primary": "#006c53",
+                    "surface-container-high": "#e6e8e9",
+                    "on-primary-fixed-variant": "#00513e",
+                    "outline-variant": "#bbcac2",
+                    "primary-fixed-dim": "#47deb3",
+                    "on-surface": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-fixed": "#ffdbcd",
+                    "tertiary-container": "#ff986c",
+                    "surface-container": "#eceeef",
+                    "primary-container": "#27c9a0",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#cde7f1",
+                    "on-surface-variant": "#3c4a44",
+                    "on-tertiary-container": "#772e0a",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#002117",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary-fixed": "#6afbcf",
+                    "outline": "#6c7a74",
+                    "surface-tint": "#006c53",
+                    "on-primary-container": "#004f3c",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "on-secondary-container": "#516871"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar-width": "280px",
+                    "space-xs": "0.25rem",
+                    "space-xl": "2rem",
+                    "space-sm": "0.5rem",
+                    "max-content-width": "800px",
+                    "space-md": "1rem",
+                    "space-lg": "1.5rem"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f8fafb;
+            color: #191c1d;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bbcac2;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- SIDEBAR NAV -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low dark:bg-surface-container-lowest flex flex-col py-space-lg px-space-md z-30">
+<!-- Brand Header -->
+<div class="mb-space-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary leading-tight">Mutual Fund AI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Expert Financial Assistant</p>
+</div>
+<!-- Primary Navigation -->
+<nav class="flex-1 space-y-space-sm overflow-y-auto custom-scrollbar">
+<!-- Active Tab: New Chat -->
+<button class="w-full flex items-center gap-space-sm py-3 px-4 rounded-lg text-primary font-bold border-r-4 border-primary hover:bg-surface-container-high transition-colors duration-200 group active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_comment</span>
+<span class="font-label-md text-label-md">New Chat</span>
+</button>
+<button class="w-full flex items-center gap-space-sm py-3 px-4 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-md text-label-md">Market Insights</span>
+</button>
+<button class="w-full flex items-center gap-space-sm py-3 px-4 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="font-label-md text-label-md">Portfolio Analysis</span>
+</button>
+<button class="w-full flex items-center gap-space-sm py-3 px-4 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-label-md text-label-md">Watchlist</span>
+</button>
+<div class="pt-space-lg">
+<h3 class="px-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-2 opacity-50">Chat History</h3>
+<div class="space-y-1">
+<button class="w-full text-left px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors text-xs truncate">
+                        Exit load for Midcap fund
+                    </button>
+<button class="w-full text-left px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors text-xs truncate">
+                        Expense ratios compared
+                    </button>
+</div>
+</div>
+</nav>
+<!-- Sidebar Footer -->
+<div class="mt-auto space-y-space-sm pt-space-lg border-t border-outline-variant/30">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+                Upgrade to Pro
+            </button>
+<button class="w-full flex items-center gap-space-sm py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+<button class="w-full flex items-center gap-space-sm py-2 px-4 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</button>
+</div>
+</aside>
+<!-- TOP NAVIGATION BAR -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface dark:bg-surface-bright border-b border-outline-variant flex items-center justify-between px-space-lg ml-sidebar-width z-20">
+<div class="flex items-center gap-space-lg">
+<h2 class="font-headline-md text-headline-md font-black text-on-surface dark:text-inverse-on-surface">Financial Intelligence Engine</h2>
+<nav class="hidden md:flex gap-space-md">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Dashboard</a>
+<a class="text-on-secondary-container font-medium hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Advisory</a>
+<a class="text-on-secondary-container font-medium hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-none rounded-full px-4 py-1.5 text-xs w-48 focus:ring-1 focus:ring-primary" placeholder="Search insights..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm mr-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a senior financial analyst in a modern office. The lighting is crisp and clean, reflecting a professional light-mode aesthetic with a palette of soft whites and teals. The background is slightly blurred showing a contemporary glass architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnAClnm7rnv3h5v1BmtQwjaMn_31XVCTatBM4PQuCktAOkFwVRA00VfOShAsVTE5r-K6C2NEoJUpEuTTwBsOI-BX1sNCMojRcaxaoX_gI3x4H8InS-8MYOnENsmeErXLk-8jvmrAKdMK4L2-6f3Ok98v1Rc9_ZjBnA0-0ZQRAjiFA3UrH_R_ii24SGUNTt7cubFMDWDeszKWJMOThK-DWfmtQ5-nTYv2ZPEzXdbJGBBGVjTOBZdE3NBg"/>
+</div>
+</div>
+</header>
+<!-- MAIN CHAT AREA -->
+<main class="ml-sidebar-width pt-16 h-screen flex flex-col bg-background">
+<!-- Facts-only Warning Banner -->
+<div class="flex-none px-space-lg pt-space-md">
+<div class="max-w-max-content-width mx-auto">
+<div class="bg-tertiary-container/20 border border-tertiary-container/30 px-4 py-2 rounded-full flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">info</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider font-bold">Facts-only Assistant: Responses are based on regulatory filings and historical data.</span>
+</div>
+</div>
+</div>
+<!-- Chat History Window -->
+<div class="flex-1 overflow-y-auto px-space-lg py-space-xl custom-scrollbar">
+<div class="max-w-max-content-width mx-auto space-y-space-xl">
+<!-- User Message -->
+<div class="flex justify-end animate-in fade-in slide-in-from-right-4 duration-500">
+<div class="bg-surface-container-high px-space-lg py-space-md rounded-2xl rounded-tr-none max-w-[80%] shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface">What is the exit load for the Icici Prudential Midcap fund?</p>
+</div>
+</div>
+<!-- Assistant Response -->
+<div class="flex justify-start gap-space-md animate-in fade-in slide-in-from-left-4 duration-700">
+<div class="flex-none h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-sm">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+</div>
+<div class="flex-1 space-y-space-md">
+<div class="bg-surface-container-lowest border border-outline-variant/30 px-space-lg py-space-md rounded-2xl rounded-tl-none shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface">
+                                The exit load for the <strong>Icici Prudential Midcap Fund</strong> is <strong>1%</strong> if redeemed within <strong>1 year</strong> from the date of allotment. For redemptions after 1 year, no exit load is applicable.
+                            </p>
+</div>
+<!-- Verified Source Link Card -->
+<div class="group flex items-center gap-3 bg-surface border border-outline-variant/40 p-3 rounded-xl hover:border-primary transition-colors max-w-sm cursor-pointer">
+<div class="h-10 w-10 bg-surface-container-high rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">link</span>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface leading-tight">Verified Source</p>
+<p class="text-xs text-on-surface-variant truncate opacity-70">groww.in/mutual-funds/icici-...</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-on-surface-variant group-hover:text-primary transition-colors">open_in_new</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- INPUT AREA -->
+<div class="flex-none px-space-lg pb-space-xl">
+<div class="max-w-max-content-width mx-auto">
+<div class="relative bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-2 shadow-lg focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all">
+<div class="flex items-center px-2 py-1 gap-2 border-b border-outline-variant/10 mb-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">equalizer</span>
+</button>
+<div class="h-4 w-[1px] bg-outline-variant mx-1"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold opacity-50 px-2">Ask about schemes, performance, or loads</span>
+</div>
+<div class="flex items-end gap-2 px-2">
+<textarea class="flex-1 border-none focus:ring-0 bg-transparent py-2 resize-none font-body-lg text-body-lg placeholder:text-on-surface-variant/40" placeholder="Ask your mutual fund query..." rows="1"></textarea>
+<button class="bg-primary text-on-primary p-2.5 rounded-xl shadow-md hover:opacity-90 active:scale-95 transition-all mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<p class="text-center mt-3 text-[10px] text-on-surface-variant opacity-50">
+                    Mutual Fund investments are subject to market risks. Read all scheme related documents carefully.
+                </p>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if (this.scrollHeight > 200) {
+                this.style.overflowY = 'auto';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+
+        // Floating ambient effect for background
+        const bgEffect = document.createElement('div');
+        bgEffect.className = 'fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30';
+        bgEffect.innerHTML = `
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary-container/20 rounded-full blur-[140px] animate-pulse" style="animation-delay: 2s;"></div>
+        `;
+        document.body.prepend(bgEffect);
+    </script>
+</body></html>
