@@ -1,10 +1,12 @@
 fastapi
 uvicorn
 langchain
-langchain-openai
+langchain-core
+langchain-chroma
+langchain-huggingface
+langchain-groq
 chromadb
 requests
 beautifulsoup4
 apscheduler
 python-dotenv
-langchain
