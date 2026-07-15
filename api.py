@@ -35,18 +35,21 @@ class ChatResponse(BaseModel):
 
 # Global pipeline instance
 pipeline = None
+pipeline_error = None
 
 @app.on_event("startup")
 async def startup_event():
-    global pipeline
+    global pipeline, pipeline_error
     try:
         logger.info("Initializing RAG Pipeline on startup...")
         pipeline = RAGPipeline()
         logger.info("RAG Pipeline initialized successfully.")
     except Exception as e:
-        logger.error(f"Failed to initialize RAG Pipeline: {e}")
+        import traceback
+        logger.error(f"Failed to initialize RAG Pipeline: {traceback.format_exc()}")
         # We don't crash the server here so the /health endpoint can still report the failure
         pipeline = None
+        pipeline_error = str(e)
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
@@ -57,7 +60,7 @@ async def chat_endpoint(request: ChatRequest):
     if not pipeline:
         raise HTTPException(
             status_code=500, 
-            detail="RAG Pipeline is not initialized. Please ensure GROQ_API_KEY is set in your environment."
+            detail=f"RAG Pipeline is not initialized. Error: {pipeline_error}"
         )
         
     try:
