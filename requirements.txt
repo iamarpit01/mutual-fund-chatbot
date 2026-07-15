@@ -10,3 +10,4 @@ requests
 beautifulsoup4
 apscheduler
 python-dotenv
+sentence-transformers
