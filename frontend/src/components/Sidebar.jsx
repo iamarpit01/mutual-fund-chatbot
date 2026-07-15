@@ -8,7 +8,7 @@ export default function Sidebar({ chats, currentChatId, onNewChat, onSelectChat,
       </div>
 
       {/* Primary Navigation */}
-      <nav className="flex-1 space-y-space-sm overflow-y-auto custom-scrollbar">
+      <nav className="flex-1 flex flex-col min-h-0 space-y-space-sm">
         {/* Active Tab: New Chat */}
         <button onClick={() => { onNewChat(); onNavigate('chat'); }} className={`w-full flex items-center gap-space-sm py-3 px-4 rounded-lg font-medium transition-all duration-200 active:scale-95 transition-transform duration-100 ${currentView === 'chat' ? 'text-primary font-bold bg-surface-container-high border-r-4 border-primary' : 'text-on-surface-variant hover:bg-surface-container-high'}`}>
           <span className="material-symbols-outlined" style={{ fontVariationSettings: currentView === 'chat' ? "'FILL' 1" : "'FILL' 0" }}>add_comment</span>
@@ -19,9 +19,9 @@ export default function Sidebar({ chats, currentChatId, onNewChat, onSelectChat,
           <span className="font-label-md text-label-md">Fund Insights</span>
         </button>
 
-        <div className="pt-space-lg">
-          <h3 className="px-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-2 opacity-50">Chat History</h3>
-          <div className="space-y-1">
+        <div className="pt-space-lg flex flex-col flex-1 min-h-0">
+          <h3 className="px-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-2 opacity-50 shrink-0">Chat History</h3>
+          <div className="space-y-1 overflow-y-auto custom-scrollbar flex-1 pb-4">
             {chats && chats.length === 0 ? (
                <div className="text-sm text-on-surface-variant/50 px-4 italic">No previous chats</div>
             ) : (
