@@ -111,6 +111,8 @@ function App() {
       const historyToPass = chatForHistory ? chatForHistory.messages.slice(-6) : [];
       
       const backendUrl = import.meta.env.PROD ? 'https://mutual-fund-chatbot-production-3c7d.up.railway.app' : 'http://localhost:8000';
+      console.log('Is Production?', import.meta.env.PROD);
+      console.log('Backend URL resolved to:', backendUrl);
       const response = await fetch(`${backendUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
