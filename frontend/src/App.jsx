@@ -110,7 +110,8 @@ function App() {
       const chatForHistory = newChatsState.find(c => c.id === activeChatId);
       const historyToPass = chatForHistory ? chatForHistory.messages.slice(-6) : [];
       
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${backendUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
