@@ -32,9 +32,9 @@ REFUSAL_TEMPLATE = (
 
 # --- 2. Semantic Search Engine ---
 def get_vectorstore():
-    # Using the agreed upon BAAI/bge-large-en-v1.5 model
+    # Using a much smaller, memory-efficient model (all-MiniLM-L6-v2) to prevent OOM on Railway's 500MB tier
     embeddings = HuggingFaceEmbeddings(
-        model_name="BAAI/bge-large-en-v1.5",
+        model_name="all-MiniLM-L6-v2",
         model_kwargs={'device': 'cpu'},
         encode_kwargs={'normalize_embeddings': True}
     )

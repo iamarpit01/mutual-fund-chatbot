@@ -10,11 +10,11 @@ from langchain_core.documents import Document
 load_dotenv()
 
 def get_embeddings_model():
-    print("Using BAAI/bge-large-en-v1.5 Local Embeddings...")
+    print("Using all-MiniLM-L6-v2 Local Embeddings...")
     from langchain_huggingface import HuggingFaceEmbeddings
-    # BGE models use specific instruction prompts for retrieval, but for generic embedding they work out of the box
+    # Using a much smaller, memory-efficient model (all-MiniLM-L6-v2) to prevent OOM on Railway's 500MB tier
     return HuggingFaceEmbeddings(
-        model_name="BAAI/bge-large-en-v1.5",
+        model_name="all-MiniLM-L6-v2",
         model_kwargs={'device': 'cpu'},
         encode_kwargs={'normalize_embeddings': True}
     )
