@@ -110,7 +110,7 @@ function App() {
       const chatForHistory = newChatsState.find(c => c.id === activeChatId);
       const historyToPass = chatForHistory ? chatForHistory.messages.slice(-6) : [];
       
-      const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const backendUrl = import.meta.env.PROD ? 'https://mutual-fund-chatbot-production-3c7d.up.railway.app' : 'http://localhost:8000';
       const response = await fetch(`${backendUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
