@@ -54,20 +54,10 @@ export default function InputFooter({ onSend, isLoading }) {
           </button>
         </div>
         
-        <div className="flex justify-between items-center mt-3 px-2">
-          <p className="text-[11px] text-on-surface-variant opacity-70">
-            AI-generated response. Verify details with current SID.
+        <div className="flex justify-center items-center mt-3 px-2">
+          <p className="text-[10px] tracking-widest uppercase font-bold text-on-surface-variant opacity-50">
+            POWERED BY REG-TECH DATA ENGINE
           </p>
-          <div className="flex items-center gap-4">
-            <button className="flex items-center gap-1.5 text-[11px] text-on-surface-variant hover:text-on-surface transition-colors">
-              <span className="material-symbols-outlined text-[14px]">mic</span>
-              Voice Input
-            </button>
-            <button className="flex items-center gap-1.5 text-[11px] text-on-surface-variant hover:text-on-surface transition-colors">
-              <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
-              Advanced Analysis
-            </button>
-          </div>
         </div>
       </div>
     </div>
