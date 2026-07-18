@@ -1,6 +1,12 @@
-export default function Sidebar({ chats, currentChatId, onNewChat, onSelectChat, onDeleteChat, currentView, onNavigate }) {
+export default function Sidebar({ chats, currentChatId, onNewChat, onSelectChat, onDeleteChat, currentView, onNavigate, isOpen, onClose }) {
   return (
-    <aside className="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low flex flex-col py-space-lg px-space-md z-30">
+    <>
+      {/* Mobile Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} 
+        onClick={onClose}
+      />
+      <aside className={`fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low flex flex-col py-space-lg px-space-md z-50 transform transition-transform duration-300 md:translate-x-0 ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
       {/* Brand Header */}
       <div className="mb-space-xl">
         <h1 className="font-headline-md text-headline-md font-bold text-primary leading-tight">Mutual Fund AI</h1>
@@ -65,5 +71,6 @@ export default function Sidebar({ chats, currentChatId, onNewChat, onSelectChat,
         </button>
       </div>
     </aside>
+    </>
   );
 }

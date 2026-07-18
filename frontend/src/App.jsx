@@ -43,6 +43,7 @@ function App() {
   
   const [isLoading, setIsLoading] = useState(false);
   const [currentView, setCurrentView] = useState('chat');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Theme state
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -169,15 +170,31 @@ function App() {
       <Sidebar 
         chats={chats} 
         currentChatId={currentChatId} 
-        onNewChat={handleNewChat} 
-        onSelectChat={handleSelectChat} 
+        onNewChat={() => { handleNewChat(); setIsMobileMenuOpen(false); }} 
+        onSelectChat={(id) => { handleSelectChat(id); setIsMobileMenuOpen(false); }} 
         onDeleteChat={handleDeleteChat}
         currentView={currentView}
-        onNavigate={setCurrentView}
+        onNavigate={(view) => { setCurrentView(view); setIsMobileMenuOpen(false); }}
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
       />
       
-      <header className="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant flex items-center justify-end px-space-lg ml-sidebar-width z-20">
-        <div className="flex items-center gap-space-md">
+      <header className="fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant flex items-center justify-between md:justify-end px-4 md:px-space-lg md:ml-sidebar-width z-20">
+        {/* Mobile Left: Hamburger */}
+        <button onClick={() => setIsMobileMenuOpen(true)} className="md:hidden p-2 -ml-2 text-on-surface-variant active:opacity-80">
+          <span className="material-symbols-outlined">menu</span>
+        </button>
+        
+        {/* Mobile Center: Title */}
+        <h1 className="md:hidden font-headline-md text-primary font-bold">Mutual Fund AI</h1>
+        
+        {/* Mobile Right: New Chat */}
+        <button onClick={() => { handleNewChat(); setCurrentView('chat'); }} className="md:hidden h-10 w-10 bg-primary text-on-primary rounded-full flex items-center justify-center active:scale-95 transition-transform shadow-md">
+          <span className="material-symbols-outlined">add</span>
+        </button>
+
+        {/* Desktop Right: Theme & Avatar */}
+        <div className="hidden md:flex items-center gap-space-md">
           <button onClick={toggleTheme} className="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80">
             <span className="material-symbols-outlined">{isDarkMode ? 'light_mode' : 'dark_mode'}</span>
           </button>
@@ -188,7 +205,7 @@ function App() {
       </header>
 
       {/* MAIN CONTENT AREA */}
-      <main className="ml-sidebar-width pt-16 h-screen flex flex-col bg-transparent z-10 relative">
+      <main className="ml-0 md:ml-sidebar-width pt-16 h-screen flex flex-col bg-transparent z-10 relative">
         {currentView === 'chat' ? (
           <>
             <ChatArea messages={messages} onSuggestionClick={handleSendQuery} />
